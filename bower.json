@@ -1,0 +1,26 @@
+{
+  "name": "weathervane",
+  "description": "A weather forecast app based on the Open Weather Map API",
+  "main": "weathervane-app.js",
+  "authors": [
+    "Vladimir Smirnov"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "weather",
+    "forecast"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}

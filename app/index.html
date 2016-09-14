@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' type='text/css' href='./styles/weathervane.min.css'></link>
+    <link rel='stylesheet' type='text/css' href='./styles/fiveDayForecast.min.css'></link>
+    <script src='./bower_components/angular/angular.min.js'></script>
+    <script src='./bower_components/angular-route/angular-route.min.js'></script>
+    <script src='./key-service/key-service.module.js'></script>
+    <script src='./key-service/key-service.service.js'></script>
+    <script src='./forecast-request/forecast-request.module.js'></script>
+    <script src='./forecast-request/forecast-request.service.js'></script>
+    <script src='./forecast-format/forecast-format.module.js'></script>
+    <script src='./forecast-format/forecast-format.service.js'></script>
+    <script src='./display-forecast/display-forecast.module.js'></script>
+    <script src='./display-forecast/display-forecast.service.js'></script>
+    <script src='./geocoding-service/geocoding.module.js'></script>
+    <script src='./geocoding-service/geocoding.service.js'></script>
+    <script src='./main-page/main-page.module.js'></script>
+    <script src='./main-page/main-page.component.js'></script>
+    <script src='./app.module.js'></script>
+    <script src='./app.config.js'></script>
+  </head>
+  <body ng-app='wvApp'>
+    
+    <!-- View -->
+    <div ng-view></div>
+
+    <div id='data-source-attribution'>
+      Data source: OpenWeatherMap
+    </div>
+
+  </body>
+</html>
