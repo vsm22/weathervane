@@ -10,12 +10,14 @@ angular
                  'forecastRequestService',
                  'forecastFormatService',
                  'displayForecastService',
+                 'headerAnimationService',
       function mainPageController($scope,
                                   keyService,
                                   geocodingService,
                                   forecastRequestService,
                                   forecastFormatService,
-                                  displayForecastService) {
+                                  displayForecastService,
+                                  headerAnimationService) {
         var _this = this;
 
         this.locationInput = 'city, zip, or location';
@@ -84,6 +86,8 @@ angular
             fdfWrap.style.transform = 'translateY(0px)';
           }
         }
+
+        headerAnimationService.applyHeaderAnimation();
       }
     ]
   });

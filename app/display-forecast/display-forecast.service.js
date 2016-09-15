@@ -20,7 +20,8 @@ angular
           'Extreme': 'extreme.svg',
           'Atmosphere': 'atmosphere.svg',
           'Haze': 'atmosphere.svg',
-          'Mist': 'atmosphere.svg'
+          'Mist': 'atmosphere.svg',
+          'Fog': 'atmosphere.svg'
         };
         return iconMap[weatherCondition];
       }

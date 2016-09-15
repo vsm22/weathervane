@@ -6,5 +6,6 @@ angular
     'keyService',
     'forecastRequest',
     'forecastFormat',
-    'displayForecast'
+    'displayForecast',
+    'headerAnimation'
   ]);

@@ -19,7 +19,7 @@
     font-family: Oswald, Arial, sans-serif;
     box-shadow: 0px 1px 1px 0px #555;
     background-color: #fff;
-    background: linear-gradient(180deg, #aaccdd, #fff 20%, #fff 80%, #aaccdd);
+    background: linear-gradient(180deg, rgba(190, 210, 255, 0.6), rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.6) 70%, rgba(190, 210, 255, 0.6));
 
     .fdf-element-top-row {
       .fdf-date {
@@ -62,7 +62,7 @@
   margin-top: 5px;
   border: 1px solid #ccc;
   background-color: #aaccdd;
-  background: linear-gradient(180deg, #fff, #aaccdd);
+  background: linear-gradient(180deg, rgba(190, 210, 255, 0.6), rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.6) 70%, rgba(190, 210, 255, 0.6));
   font-family: Montserrat, Arial, sans-serif;
   box-shadow: 0px 1px 1px 0px #ccc;
   transform: translateY(-1000px);
@@ -90,7 +90,7 @@
       flex-direction: row;
 
       & > div {
-        margin-right: 25px;
+        margin-right: 20px;
       }
 
       #cw-weather {
