@@ -25,8 +25,9 @@ angular
             $http.get(requestUrl).then(function(response) {
               let lat = response.data.results[0].geometry.location.lat;
               let lng = response.data.results[0].geometry.location.lng;
+              let name = response.data.results[0].formatted_address;
 
-              resolve({lat: lat, lng: lng});
+              resolve({lat: lat, lng: lng, name: name});
             });
           }
         });

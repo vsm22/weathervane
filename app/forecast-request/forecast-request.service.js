@@ -8,11 +8,11 @@ angular
     function forecastRequest($http) {
       var _this = this;
 
-      this.requestByLatLng = function requestByLatLng (lat, lng, apiKey) {
+      this.forecastRequestByLatLng = function forecastRequestByLatLng (lat, lng, apiKey) {
 
         var forecastRequest = new Promise(function(resolve, reject) {
-          var forecastReqUrl;
-          var forecastResponse;
+          let forecastReqUrl;
+          let forecastResponse;
 
           forecastReqUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat='
                            + lat
@@ -23,12 +23,34 @@ angular
 
           $http.get(forecastReqUrl).then(function(response) {
             forecastResponse = response.data.list;
-            console.log(forecastResponse);
             resolve(forecastResponse);
           });
         });
 
         return forecastRequest;
+      }
+
+
+      this.currentWeatherRequestByLatLng = function currentWeatherRequestByLatLng (lat, lng, apiKey) {
+
+        var weatherRequest = new Promise(function(resolve, reject) {
+          let weatherReqUrl;
+          let weatherResponse;
+
+          weatherReqUrl = 'http://api.openweathermap.org/data/2.5/weather?lat='
+                           + lat
+                           + '&lon='
+                           + lng
+                           + '&APPID='
+                           + apiKey;
+
+          $http.get(weatherReqUrl).then(function(response) {
+            weatherResponse = response.data;
+            resolve(weatherResponse);
+          });
+        });
+
+        return weatherRequest;
       }
     }
   ]);

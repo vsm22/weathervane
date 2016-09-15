@@ -18,7 +18,9 @@ angular
           'Thunderstorm': 'thunderstorm.svg',
           'Additional': 'additional.svg',
           'Extreme': 'extreme.svg',
-          'Atmosphere': 'atmosphere.svg'
+          'Atmosphere': 'atmosphere.svg',
+          'Haze': 'atmosphere.svg',
+          'Mist': 'atmosphere.svg'
         };
         return iconMap[weatherCondition];
       }
