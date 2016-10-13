@@ -7,12 +7,12 @@ $btnHoverTextColor: #000;
 
 body {
   font-family: Muli, Arial, sans-serif;
+  background: linear-gradient(90deg, #61aabb, #ddeeff);
 }
 
 #header {
   display: block;
   min-height: 118px;
-  border-bottom: 1px solid #ccc;
   padding: 15px;
 
   #header-bg {
