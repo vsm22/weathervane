@@ -1,0 +1,10 @@
+{
+  "Open Weather Map": {
+    "key": "8d777a24a113a3ac4bbb2f9cc65a0e88",
+    "url": "http://api.openweathermap.org/data/2.5/forecast?"
+  },
+  "Google Maps": {
+    "key": "AIzaSyAKhS0sxNOqKDAZIvuJ6WLzTi5UgJ34Wtc",
+    "url": "https://maps.googleapis.com/maps/api/geocode/json?"
+  }
+}
