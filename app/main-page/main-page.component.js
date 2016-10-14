@@ -47,23 +47,16 @@ angular
           });
 
           function requestForecast(latLng) {
-            keyService.getKey("Open Weather Map").then(function(key){
-              getWeather(key);
-              getForecast(key);
+            keyService.getKey("Apixu").then(function(apiKey){
+              getForecast(apiKey);
             });
 
-            function getWeather(key) {
-              forecastRequestService.currentWeatherRequestByLatLng(latLng.lat, latLng.lng, key)
-                .then(function (weather) {
-                  formatWeather(weather);
+            function getForecast(apiKey) {
+              forecastRequestService.forecastRequestByLatLng(latLng.lat, latLng.lng, apiKey)
+                .then(function (response) {
+                  formatWeather(response.current);
+                  formatForecast(response.forecast.forecastday);
                   displayWeather();
-                });
-            }
-
-            function getForecast(key) {
-              forecastRequestService.forecastRequestByLatLng(latLng.lat, latLng.lng, key)
-                .then(function (forecast) {
-                  formatForecast(forecast);
                 });
             }
           }

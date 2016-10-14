@@ -14,15 +14,14 @@ angular
           let forecastReqUrl;
           let forecastResponse;
 
-          forecastReqUrl = 'http://api.openweathermap.org/data/2.5/forecast?lat='
-                           + lat
-                           + '&lon='
-                           + lng
-                           + '&APPID='
-                           + apiKey;
+          forecastReqUrl = 'https://api.apixu.com/v1/forecast.json?key='
+                           + apiKey
+                           + '&q='
+                           + lat + ',' + lng
+                           + '&days=5';
 
           $http.get(forecastReqUrl).then(function(response) {
-            forecastResponse = response.data.list;
+            forecastResponse = response.data;
             resolve(forecastResponse);
           });
         });
@@ -30,19 +29,17 @@ angular
         return forecastRequest;
       }
 
-
       this.currentWeatherRequestByLatLng = function currentWeatherRequestByLatLng (lat, lng, apiKey) {
 
         var weatherRequest = new Promise(function(resolve, reject) {
           let weatherReqUrl;
           let weatherResponse;
 
-          weatherReqUrl = 'http://api.openweathermap.org/data/2.5/weather?lat='
-                           + lat
-                           + '&lon='
-                           + lng
-                           + '&APPID='
-                           + apiKey;
+          weatherReqUrl = 'https://api.apixu.com/v1/current.json?key='
+                          + apiKey
+                          + '&q='
+                          + lat + ',' + lng
+                          + '&days=5';
 
           $http.get(weatherReqUrl).then(function(response) {
             weatherResponse = response.data;

@@ -18,28 +18,22 @@ angular
           let f = {}; //formated output object
           let date;
 
-          f.date = fcastFrame.dt_txt.substr(0, 10);
-          f.year = fcastFrame.dt_txt.substr(0, 4);
-          f.monthNum = fcastFrame.dt_txt.substr(5, 2);
+          f.date = fcastFrame.date;
+          f.year = fcastFrame.date.substr(0, 4);
+          f.monthNum = fcastFrame.date.substr(5, 2);
           f.monthName = months[parseInt(f.monthNum - 1)];
-          f.dayNum = fcastFrame.dt_txt.substr(8, 2);
+          f.dayNum = fcastFrame.date.substr(8, 2);
           date = new Date(f.monthName + ' ' + f.dayNum + ', ' + f.year + ' 00:00:01');
           f.dayName = days[date.getDay()];
-          f.time = fcastFrame.dt_txt.substr(11, 5);
-          f.weather = fcastFrame.weather[0].description;
-          f.weatherMain = fcastFrame.weather[0].main;
-          f.tempC = fcastFrame.main.temp - 273.15;
-          f.tempF = (f.tempC * (9/5)) + 32;
-          f.windSpeed = fcastFrame.wind.speed; // m/s
-          f.windDeg = fcastFrame.wind.deg; // deg
-          f.humidity = fcastFrame.main.humidity; //%
-          f.pressure = fcastFrame.main.pressure * 0.02952998751; // in
-          f.cloudCover = fcastFrame.clouds.all; //%
+          f.weather = fcastFrame.day.condition.text;
+          f.tempHighC = fcastFrame.day.maxtemp_c;
+          f.tempHighF = fcastFrame.day.maxtemp_f;
+          f.tempLowC = fcastFrame.day.mintemp_c;
+          f.tempLowF = fcastFrame.day.mintemp_f;
+          f.windSpeed = fcastFrame.day.maxwind_mph; // mph
+          f.precip = fcastFrame.day.totalprecip_in; // in
 
-          if(!fiveDayForecast[fiveDayForecast.length - 1]
-             || fiveDayForecast[fiveDayForecast.length - 1].dayNum !== f.dayNum) {
-            fiveDayForecast.push(f);
-          };
+          fiveDayForecast.push(f);
         });
 
         return fiveDayForecast;
@@ -59,17 +53,17 @@ angular
         w.hours = date.getHours();
         w.minutes = date.getMinutes();
         w.time = ((w.hours > 12) ? w.hours - 12 : w.hours)
-                 + ':' + w.minutes 
+                 + ':' + w.minutes
                  + ((w.hours >= 12) ? ' pm' : ' am');
-        w.weather = rawWeather.weather[0].description;
-        w.weatherMain = rawWeather.weather[0].main;
-        w.tempC = rawWeather.main.temp - 273.15;
-        w.tempF = (w.tempC * (9/5)) + 32;
-        w.windSpeed = rawWeather.wind.speed; // m/s
-        w.windDeg = rawWeather.wind.deg; // deg
-        w.humidity = rawWeather.main.humidity; //%
-        w.pressure = rawWeather.main.pressure * 0.02952998751; // in
-        w.cloudCover = rawWeather.clouds.all; //%
+        w.weather = rawWeather.condition.text;
+        w.tempC = rawWeather.temp_c;
+        w.tempF = rawWeather.temp_f;
+        w.windSpeed = rawWeather.wind_mph; // mph
+        w.windDeg = rawWeather.wind_degree; // deg
+        w.windDirection = rawWeather.wind_dir;
+        w.humidity = rawWeather.humidity; //%
+        w.pressure = rawWeather.pressure_in; // in
+        w.precip = rawWeather.precip_in; //in
 
         return w;
       }

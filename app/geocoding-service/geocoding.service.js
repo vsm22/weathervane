@@ -12,7 +12,7 @@ angular
       this.getLatLngByAddress = function getLatLngByAddress(address) {
         const googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
 
-        var returnLatLng = new Promise(function(resolve, reject) {
+        let returnLatLng = new Promise(function(resolve, reject) {
           keyService.getKey("Google Maps").then(function(key){
             requestGeocodeData(key);
           });
@@ -33,6 +33,33 @@ angular
         });
 
         return returnLatLng;
+      }
+
+      this.getLocationKeyByLatLng = function getLocationKeyByLatLng (lat, lng) {
+        const locationRequestUrl = 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?';
+
+        let returnLocationKey = new Promise(function(resolve, reject) {
+          keyService.getKey("AccuWeather").then(function(apiKey){
+            requestLocationKey(apiKey);
+          });
+
+          function requestLocationKey (apiKey) {
+            let requestUrl = locationRequestUrl
+                             + apiKey
+                             + '&q='
+                             + lat + ',' + lng;
+
+            $http.get(requestUrl).then(function(response) {
+              let locationKey = response.data.key;
+
+              resolve(locationKey);
+            });
+          }
+
+
+        });
+
+        return returnLocationKey;
       }
 
       /*
