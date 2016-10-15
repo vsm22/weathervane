@@ -1,5 +1,3 @@
 'use strict';
 
-angular.module('forecastRequest', [
-    'keyService'
-]);
+angular.module('forecastRequest', ['keyService']);

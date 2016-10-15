@@ -1,5 +1,3 @@
 'use strict';
 
-angular.module('geocoding', [
-  'keyService'
-]);
+angular.module('geocoding', ['keyService']);

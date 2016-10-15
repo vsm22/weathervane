@@ -1,0 +1,139 @@
+<!-- Header -->
+<div id='header'>
+  <canvas id='header-bg'></canvas>
+  <div id='header-banner'>
+    <img id='header-icon' src='./images/header_icon.svg'>
+    <div id='title-banner'>
+      <h1 id='header-title'> weathervane </h1>
+      <h4 id='header-subtitle'> weather forecasts based on the Apixu weather API</h4>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <form id='location-input-form'>
+    <input type='text' id='location-input-text'
+           ng-model='$ctrl.locationInput'
+           ng-focus='$ctrl.clearLocationInput()'
+           ng-keyup='($event.keyCode === 13) ? $ctrl.getLocationConditions() : null'>
+    </input>
+
+    <div id='search-button' ng-click='$ctrl.getLocationConditions()'>
+      <img src='./images/search.svg' width='15px' height='15px'>
+    </div>
+  </form>
+
+  <!-- Temperature units -->
+  <div id='temp-units'>
+    ( Temperature units:
+    <div id='display-C'
+         ng-style='displayCStyle'
+         ng-click='displayCStyle={"text-decoration":"underline", "font-weight":"bold"};
+                   displayFStyle={"text-decoration":"none", "font-weight":"normal"};
+                   $ctrl.tempUnits = "C"'> &degC </div>
+    <div id='display-F'
+         ng-style='displayFStyle'
+         ng-click='displayFStyle={"text-decoration":"underline", "font-weight":"bold"};
+                   displayCStyle={"text-decoration":"none", "font-weight":"normal"};
+                   $ctrl.tempUnits = "F"'> &degF </div>
+    <span> ) </span>
+  </div>
+</div>
+
+
+
+<div>
+  <!-- Current Weather -->
+  <!-- cw = "current weather" -->
+  <div id='cw-wrap'>
+
+    <!-- Location Name -->
+    <div id='location-name'>
+      {{ $ctrl.locationName }}
+    </div>
+
+    <div id='cw-element'>
+      <div id='cw-element-top-row'>
+        <div id='cw-date'>
+          {{$ctrl.weather.dayName}}, {{ $ctrl.weather.monthName }} {{ $ctrl.weather.dayNum }}, {{ $ctrl.weather.year }} {{ $ctrl.weather.time }}
+        </div>
+      </div>
+
+      <div id='cw-element-middle-row'>
+          <div id='cw-weather'>
+            {{ $ctrl.weather.weather }}
+          </div>
+
+          <div id='cw-humidity'>
+            humidity: {{ $ctrl.weather.humidity }} %
+          </div>
+
+          <div id='cw-pressure'>
+            pressure: {{ $ctrl.weather.pressure | number:2 }} in
+          </div>
+      </div> <!-- </.cw-element-middle-row> -->
+
+      <div id='cw-element-bottom-row'>
+        <div id='cw-element-left-pane'>
+          <img ng-src='{{"./images/" + $ctrl.getWeatherIcon($ctrl.weather.weather)}}'
+               width: '200px' height: '200px'>
+        </div>
+
+        <div id='cw-element-right-pane'>
+          <div id='cw-temp'>
+            {{ ($ctrl.tempUnits === "C") ? $ctrl.weather.tempC : $ctrl.weather.tempF | number:0 }}
+            {{ ($ctrl.tempUnits === "C") ? "&degC" : "&degF"}}
+          </div>
+        </div>
+      </div> <!-- </.cw-element-bottom-row> -->
+
+    </div> <!-- </.cw-element> -->
+  </div>
+
+  <!-- Five-Day forecast -->
+  <!-- //fdf means "five day forecast" -->
+  <div id='fdf-wrap'>
+    <div class='fdf-title'>
+
+    </div>
+    <div class='fdf-element' ng-repeat='f in $ctrl.fiveDayForecast | filter: {dayNum: $ctrl.notCurrentDay}'>
+      <div class='fdf-element-top-row'>
+        <div class='fdf-date'>
+          {{f.dayName}}, {{ f.monthName }} {{ f.dayNum }}, {{ f.year }}
+        </div>
+      </div>
+
+      <div class='fdf-element-bottom-row'>
+        <div class='fdf-element-left-pane'>
+          <img ng-src='{{"./images/" + $ctrl.getWeatherIcon(f.weather)}}'>
+        </div>
+
+        <div class='fdf-element-center-pane'>
+          <div class='fdf-temp'>
+            <div class='high-temp'>
+              {{ ($ctrl.tempUnits === "C") ? f.tempHighC : f.tempHighF | number:0 }}
+              {{ ($ctrl.tempUnits === "C") ? "&degC" : "&degF"}}
+            </div>
+            <div class='low-temp'>
+              {{ ($ctrl.tempUnits === "C") ? f.tempLowC : f.tempLowF | number:0 }}
+              {{ ($ctrl.tempUnits === "C") ? "&degC" : "&degF"}}
+            </div>
+          </div>
+        </div>
+
+        <div class='fdf-element-right-pane'>
+          <div class='fdf-weather'>
+            {{ f.weather }}
+          </div>
+
+          <div class='fdf-humidity'>
+            precipitation: {{ f.precip }} in
+          </div>
+
+          <div class='fdf-pressure'>
+            wind speed: {{ f.windSpeed }} mph
+          </div>
+        </div> <!-- </.fdf-element-center-pane> -->
+      </div> <!-- </.fdf-element-bottom-row> -->
+    </div> <!-- </.fdf-element> -->
+  </div> <!-- </.fdf-wrap> -->
+</div>

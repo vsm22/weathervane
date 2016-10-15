@@ -1,6 +1,3 @@
 'use strict';
 
-angular.module('wvApp', [
-  'ngRoute',
-  'mainPage'
-]);
+angular.module('wvApp', ['ngRoute', 'mainPage']);

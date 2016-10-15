@@ -5,11 +5,14 @@
   "description": "A weather forecast app based on the Open Weather Map API",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.16.0",
     "bower": "^1.7.9",
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "webpack": "^1.13.2"
   },
   "dependencies": {},
   "scripts": {
-    "start": "http-server ./app -a localhost -p 8000 -c-1"
+    "start": "http-server ./app -a localhost -p 8000 -c-1",
+    "build": "babel src -d app"
   }
 }
