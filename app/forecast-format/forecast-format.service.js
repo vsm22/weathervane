@@ -2,18 +2,18 @@
 
 angular.module('forecastFormat').service('forecastFormatService', [function forecastFormat() {
 
-  let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
-  let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   /**
    *
    */
   this.formatFiveDayForecast = function formatFiveDayForecast(rawForecast) {
-    let fiveDayForecast = [];
+    var fiveDayForecast = [];
 
-    rawForecast.forEach((fcastFrame, index) => {
-      let f = {}; //formated output object
-      let date;
+    rawForecast.forEach(function (fcastFrame, index) {
+      var f = {}; //formated output object
+      var date = void 0;
 
       f.date = fcastFrame.date;
       f.year = fcastFrame.date.substr(0, 4);
@@ -38,8 +38,8 @@ angular.module('forecastFormat').service('forecastFormatService', [function fore
 
   this.formatWeather = function formatWeather(rawWeather) {
 
-    let w = {}; //formated output object
-    let date = new Date();
+    var w = {}; //formated output object
+    var date = new Date();
 
     w.date = date.getDay();
     w.year = date.getFullYear();

@@ -8,8 +8,8 @@ angular.module('forecastRequest').service('forecastRequestService', ['$http', fu
   this.forecastRequestByLatLng = function forecastRequestByLatLng(lat, lng, apiKey) {
 
     var forecastRequest = new Promise(function (resolve, reject) {
-      let forecastReqUrl;
-      let forecastResponse;
+      var forecastReqUrl = void 0;
+      var forecastResponse = void 0;
 
       forecastReqUrl = 'https://api.apixu.com/v1/forecast.json?key=' + apiKey + '&q=' + lat + ',' + lng + '&days=5';
 
@@ -25,8 +25,8 @@ angular.module('forecastRequest').service('forecastRequestService', ['$http', fu
   this.currentWeatherRequestByLatLng = function currentWeatherRequestByLatLng(lat, lng, apiKey) {
 
     var weatherRequest = new Promise(function (resolve, reject) {
-      let weatherReqUrl;
-      let weatherResponse;
+      var weatherReqUrl = void 0;
+      var weatherResponse = void 0;
 
       weatherReqUrl = 'https://api.apixu.com/v1/current.json?key=' + apiKey + '&q=' + lat + ',' + lng + '&days=5';
 

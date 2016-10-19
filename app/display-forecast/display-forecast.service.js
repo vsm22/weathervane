@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('displayForecast').service('displayForecastService', [function displayForecastService() {
-    const conditionMap = [{
+    var conditionMap = [{
         "code": 1000,
         "day": "Sunny",
         "night": "Clear",
@@ -291,7 +291,7 @@ angular.module('displayForecast').service('displayForecastService', [function di
         "condition": "Thunderstorm"
     }];
 
-    const iconMap = {
+    var iconMap = {
         'Clear': 'clear.svg',
         'Clouds': 'clouds.svg',
         'Drizzle': 'drizzle.svg',
@@ -311,7 +311,7 @@ angular.module('displayForecast').service('displayForecastService', [function di
      */
     this.getWeatherIcon = function getWeatherIcon(dayCondition) {
         if (dayCondition) {
-            let weatherCondition = conditionMap.find(function (entry) {
+            var weatherCondition = conditionMap.find(function (entry) {
                 return entry.day.toLowerCase() === dayCondition.toLowerCase();
             });
 

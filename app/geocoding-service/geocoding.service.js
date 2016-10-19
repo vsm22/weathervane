@@ -6,20 +6,20 @@ angular.module('geocoding').service('geocodingService', ['$http', 'keyService', 
    *
    */
   this.getLatLngByAddress = function getLatLngByAddress(address) {
-    const googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
+    var googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
 
-    let returnLatLng = new Promise(function (resolve, reject) {
+    var returnLatLng = new Promise(function (resolve, reject) {
       keyService.getKey("Google Maps").then(function (key) {
         requestGeocodeData(key);
       });
 
       function requestGeocodeData(key) {
-        let requestUrl = googleAPIUrl + address + '&key=' + key;
+        var requestUrl = googleAPIUrl + address + '&key=' + key;
 
         $http.get(requestUrl).then(function (response) {
-          let lat = response.data.results[0].geometry.location.lat;
-          let lng = response.data.results[0].geometry.location.lng;
-          let name = response.data.results[0].formatted_address;
+          var lat = response.data.results[0].geometry.location.lat;
+          var lng = response.data.results[0].geometry.location.lng;
+          var name = response.data.results[0].formatted_address;
 
           resolve({ lat: lat, lng: lng, name: name });
         });
@@ -30,18 +30,18 @@ angular.module('geocoding').service('geocodingService', ['$http', 'keyService', 
   };
 
   this.getLocationKeyByLatLng = function getLocationKeyByLatLng(lat, lng) {
-    const locationRequestUrl = 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?';
+    var locationRequestUrl = 'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?';
 
-    let returnLocationKey = new Promise(function (resolve, reject) {
+    var returnLocationKey = new Promise(function (resolve, reject) {
       keyService.getKey("AccuWeather").then(function (apiKey) {
         requestLocationKey(apiKey);
       });
 
       function requestLocationKey(apiKey) {
-        let requestUrl = locationRequestUrl + apiKey + '&q=' + lat + ',' + lng;
+        var requestUrl = locationRequestUrl + apiKey + '&q=' + lat + ',' + lng;
 
         $http.get(requestUrl).then(function (response) {
-          let locationKey = response.data.key;
+          var locationKey = response.data.key;
 
           resolve(locationKey);
         });

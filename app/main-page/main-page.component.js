@@ -18,8 +18,8 @@ angular.module('mainPage').component('mainPage', {
     };
 
     this.getLocationConditions = function getLoactionConditions() {
-      let cwWrap = document.getElementById('cw-wrap');
-      let fdfWrap = document.getElementById('fdf-wrap');
+      var cwWrap = document.getElementById('cw-wrap');
+      var fdfWrap = document.getElementById('fdf-wrap');
 
       cwWrap.style.transition = 'transform, 0s';
       fdfWrap.style.transition = 'transform, 0s';

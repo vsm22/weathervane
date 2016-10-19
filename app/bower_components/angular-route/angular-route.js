@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @license AngularJS v1.5.8
  * (c) 2010-2016 Google, Inc. http://angularjs.org
@@ -494,7 +496,7 @@
          * As a result of that, {@link ngRoute.directive:ngView ngView}
          * creates new scope and reinstantiates the controller.
          */
-        reload: function () {
+        reload: function reload() {
           forceReload = true;
 
           var fakeLocationEvent = {
@@ -524,7 +526,7 @@
          *
          * @param {!Object<string, string>} newParams mapping of URL parameter names to values
          */
-        updateParams: function (newParams) {
+        updateParams: function updateParams(newParams) {
           if (this.current && this.current.$$route) {
             newParams = angular.extend({}, this.current.params, newParams);
             $location.path(interpolate(this.current.$$route.originalPath, newParams));
@@ -930,7 +932,7 @@
       terminal: true,
       priority: 400,
       transclude: 'element',
-      link: function (scope, $element, attr, ctrl, $transclude) {
+      link: function link(scope, $element, attr, ctrl, $transclude) {
         var currentScope,
             currentElement,
             previousLeaveAnimation,
@@ -1004,7 +1006,7 @@
     return {
       restrict: 'ECA',
       priority: -400,
-      link: function (scope, $element) {
+      link: function link(scope, $element) {
         var current = $route.current,
             locals = current.locals;
 

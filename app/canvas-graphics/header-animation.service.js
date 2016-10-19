@@ -3,10 +3,10 @@
 angular.module('headerAnimation').service('headerAnimationService', [function headerAnimationService() {
 
   this.applyHeaderAnimation = function applyHeaderAnimation() {
-    const canvas = document.getElementById('header-bg');
+    var canvas = document.getElementById('header-bg');
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
-    const ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d');
 
     var bgGradient = ctx.createLinearGradient(0, canvas.height / 2, canvas.width / 2, canvas.height / 2);
     bgGradient.addColorStop(0, '#61aabb');
@@ -15,7 +15,7 @@ angular.module('headerAnimation').service('headerAnimationService', [function he
     ctx.fillStyle = bgGradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    var Cloud = function (o) {
+    var Cloud = function Cloud(o) {
       var _this = this;
 
       o = o || {};
@@ -33,7 +33,7 @@ angular.module('headerAnimation').service('headerAnimationService', [function he
       this.balls[0].cYoffset = Math.trunc(Math.random() * 20);
       this.balls[0].r = Math.trunc(Math.random() * (this.cloudLength / this.numBalls)) + 10;
 
-      for (let i = 1; i < this.numBalls; i++) {
+      for (var i = 1; i < this.numBalls; i++) {
         this.balls[i] = {};
         this.balls[i].cXoffset = this.balls[i - 1].cXoffset + Math.trunc(Math.random() * 10);
         this.balls[i].cYoffset = Math.trunc(Math.random() * 20);
@@ -43,7 +43,7 @@ angular.module('headerAnimation').service('headerAnimationService', [function he
     Cloud.prototype.drawCloud = function () {
       var _this = this;
 
-      for (let i = 0; i < this.numBalls; i++) {
+      for (var i = 0; i < this.numBalls; i++) {
         ctx.beginPath();
         ctx.arc(_this.balls[i].cXoffset + _this.cX, _this.balls[i].cYoffset + _this.cY, _this.balls[i].r, 0, 2 * Math.PI);
         ctx.fillStyle = '#ffffff';
@@ -54,8 +54,8 @@ angular.module('headerAnimation').service('headerAnimationService', [function he
     var clouds = [];
 
     function createMoreClouds(numClouds) {
-      for (let i = 0; i < numClouds; i++) {
-        let newCloud = new Cloud({
+      for (var i = 0; i < numClouds; i++) {
+        var newCloud = new Cloud({
           cX: 0,
           cY: Math.trunc(Math.random() * canvas.height)
         });
@@ -78,7 +78,7 @@ angular.module('headerAnimation').service('headerAnimationService', [function he
         ctx.fillStyle = bgGradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        clouds.forEach((cloud, cloudIndex) => {
+        clouds.forEach(function (cloud, cloudIndex) {
           cloud.cX = cloud.cX + cloud.xIncrement;
           cloud.drawCloud();
 

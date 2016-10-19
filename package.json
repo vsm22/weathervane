@@ -4,8 +4,14 @@
   "version": "0.1.0",
   "description": "A weather forecast app based on the Open Weather Map API",
   "license": "MIT",
+  "babel": {
+    "presets": ["es2015"],
+    "plugins": ["transform-es2015-arrow-functions"]
+  },
   "devDependencies": {
     "babel-cli": "^6.16.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
+    "babel-preset-es2015": "^6.16.0",
     "bower": "^1.7.9",
     "http-server": "^0.9.0",
     "webpack": "^1.13.2"
