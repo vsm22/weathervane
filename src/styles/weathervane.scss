@@ -6,14 +6,13 @@ $btnHoverBgColor: #eee;
 $btnHoverTextColor: #000;
 
 body {
-  font-family: Muli, Arial, sans-serif;
+  font-family: 'Muli', Arial, sans-serif;
   background: linear-gradient(90deg, #61aabb, #ddeeff);
 }
 
 #header {
   display: block;
   min-height: 118px;
-  padding: 15px;
 
   #header-bg {
     position: absolute;
@@ -36,7 +35,7 @@ body {
       display: inline-block;
 
       #header-title {
-        display: block;
+        display: inline-block;
         font-family: Muli, Arial, sans-serif;
         color: #121212;
         letter-spacing: 0.1em;

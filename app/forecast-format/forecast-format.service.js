@@ -2,7 +2,7 @@
 
 angular.module('forecastFormat').service('forecastFormatService', [function forecastFormat() {
 
-  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   /**
@@ -48,8 +48,11 @@ angular.module('forecastFormat').service('forecastFormatService', [function fore
     w.dayNum = date.getDate();
     w.dayName = days[date.getDay()];
     w.hours = date.getHours();
+    w.hours12 = w.hours > 12 ? w.hours - 12 : w.hours; // convert to 12-hour system
+    w.hoursString = w.hours12 > 9 ? w.hours12.toString() : '0' + w.hours12; // make sure 2 digits always displayed (i.e. if hours is 3, display "03")
     w.minutes = date.getMinutes();
-    w.time = (w.hours > 12 ? w.hours - 12 : w.hours) + ':' + w.minutes + (w.hours >= 12 ? ' pm' : ' am');
+    w.minutesString = w.minutes > 9 ? w.minutes.toString() : '0' + w.minutes;
+    w.time = w.hoursString + ':' + w.minutesString + (w.hours >= 12 ? ' pm' : ' am');
     w.weather = rawWeather.condition.text;
     w.tempC = rawWeather.temp_c;
     w.tempF = rawWeather.temp_f;
