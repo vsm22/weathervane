@@ -19,6 +19,6 @@
   "dependencies": {},
   "scripts": {
     "start": "http-server ./app -a localhost -p 8000 -c-1",
-    "build": "babel src -d app"
+    "build": "babel src -d src/transpiled"
   }
 }

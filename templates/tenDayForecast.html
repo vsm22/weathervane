@@ -1,0 +1,35 @@
+<!-- Five-Day forecast -->
+<!-- //tdf means "five day forecast" -->
+<div id='tdf-wrap'>
+  <div class='tdf-title'>
+
+  </div>
+  <div class='tdf-element' ng-repeat='f in $ctrl.tenDayForecast | filter: {dayNum: $ctrl.notCurrentDay}'>
+    <div class='tdf-element-top-row'>
+      <div class='tdf-date'>
+        {{f.dayName}}, {{ f.monthName }} {{ f.dayNum }}, {{ f.year }}
+      </div>
+    </div>
+
+    <div class='tdf-element-bottom-row'>
+      <div class='tdf-element-center-pane'>
+        <div class='tdf-weather'>
+          {{ f.weather }}
+        </div>
+
+        <div class='tdf-temp'>
+          <div class='high-temp'>
+            H:
+            {{ ($ctrl.tempUnits.value === "C") ? f.tempHighC : f.tempHighF | number:0 }}
+            {{ ($ctrl.tempUnits.value === "C") ? "&degC" : "&degF"}}
+          </div>
+          <div class='low-temp'>
+            L:
+            {{ ($ctrl.tempUnits.value === "C") ? f.tempLowC : f.tempLowF | number:0 }}
+            {{ ($ctrl.tempUnits.value === "C") ? "&degC" : "&degF"}}
+          </div>
+        </div>
+      </div>
+    </div> <!-- </.tdf-element-bottom-row> -->
+  </div> <!-- </.tdf-element> -->
+</div> <!-- </.tdf-wrap> -->

@@ -1,0 +1,59 @@
+<!-- Header -->
+<div id='header'>
+  <canvas id='header-bg'></canvas>
+  <div id='header-banner'>
+    <img id='header-icon' src='/images/header_icon.svg'>
+    <div id='title-banner'>
+      <h1 id='header-title'> weathervane </h1>
+      <h4 id='header-subtitle'> weather forecasts based on the Apixu weather API</h4>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <form id='location-input-form'>
+    <input type='text' id='location-input-text'
+           ng-model='$ctrl.locationInput'
+           ng-focus='$ctrl.clearLocationInput()'
+           ng-keyup='($event.keyCode === 13) ? $ctrl.getLocationConditions() : null'>
+    </input>
+
+    <div id='search-button' ng-click='$ctrl.getLocationConditions()'>
+      <img src='/images/search.svg' width='15px' height='15px'>
+    </div>
+  </form>
+
+  <!-- Temperature units -->
+  <div id='temp-units'>
+    ( Temperature units:
+    <div id='display-C'
+         ng-style='displayCStyle'
+         ng-click='displayCStyle={"text-decoration":"underline", "font-weight":"bold"};
+                   displayFStyle={"text-decoration":"none", "font-weight":"normal"};
+                   $ctrl.tempUnits.value = "C"'> &degC </div>
+    <div id='display-F'
+         ng-style='displayFStyle'
+         ng-click='displayFStyle={"text-decoration":"underline", "font-weight":"bold"};
+                   displayCStyle={"text-decoration":"none", "font-weight":"normal"};
+                   $ctrl.tempUnits.value = "F"'> &degF </div>
+    <span> ) </span>
+  </div>
+
+
+  <div id='resultsDisplay'>
+    <!-- Location Name -->
+    <div id='location-name'>
+      {{ $ctrl.locationData.locationName }}
+    </div>
+
+    <!-- Display Nav (current weather, 5-day forecast, 10-day forecast)-->
+    <nav id='active-display-tabs'>
+      <a ng-link="['CurrentWeather']" ng-click='$ctrl.slideInForecast()'> Current Weather </a>
+      <a ng-link="['FiveDayForecast']" ng-click='$ctrl.slideInForecast()'> 5-day Forecast </a>
+      <a ng-link="['TenDayForecast']" ng-click='$ctrl.slideInForecast()'> 10-day Forecast </a>
+    </nav>
+
+    <div id='forecastDisplay'>
+      <ng-outlet></ng-outlet>
+    </div>
+  </div>
+</div>

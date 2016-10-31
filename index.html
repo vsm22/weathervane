@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+    <title>Weathervane</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <base href='./app/'>
-    <link rel='stylesheet' type='text/css' href='./styles/weathervane.min.css'></link>
-    <link rel='stylesheet' type='text/css' href='./styles/fiveDayForecast.min.css'></link>
+    <base href='/'>
+    <link rel='stylesheet' type='text/css' href='../styles/weathervane.min.css'></link>
+    <link rel='stylesheet' type='text/css' href='../styles/fiveDayForecast.min.css'></link>
+    <link rel='stylesheet' type='text/css' href='../styles/tenDayForecast.min.css'></link>
     <script src='./lib/angular.min.js'></script>
-    <script src='./lib/angular-route.min.js'></script>
+    <script src='./lib/angular_1_router.js'></script>
     <script src='./lib/angular-animate.min.js'></script>
-    <script src='./key-service/key-service.module.js'></script>
-    <script src='./key-service/key-service.service.js'></script>
-    <script src='./forecast-request/forecast-request.module.js'></script>
-    <script src='./forecast-request/forecast-request.service.js'></script>
-    <script src='./forecast-format/forecast-format.module.js'></script>
-    <script src='./forecast-format/forecast-format.service.js'></script>
-    <script src='./display-forecast/display-forecast.module.js'></script>
-    <script src='./display-forecast/display-forecast.service.js'></script>
-    <script src='./geocoding-service/geocoding.module.js'></script>
-    <script src='./geocoding-service/geocoding.service.js'></script>
-    <script src='./main-page/main-page.module.js'></script>
-    <script src='./main-page/main-page.component.js'></script>
-    <script src='./canvas-graphics/header-animation.module.js'></script>
-    <script src='./canvas-graphics/header-animation.service.js'></script>
-    <script src='./app.module.js'></script>
-    <script src='./app.config.js'></script>
-  </head>
 
-  <body ng-app='wvApp'>
+    <script src='./src/transpiled/app.module.js'></script>
+    <script src='./src/transpiled/components/main-header.component.js'></script>
+    <script src='./src/transpiled/components/currentWeather.component.js'></script>
+    <script src='./src/transpiled/components/fiveDayForecast.component.js'></script>
+    <script src='./src/transpiled/components/tenDayForecast.component.js'></script>
+    <script src='./src/transpiled/services/background-animation.service.js'></script>
+    <script src='./src/transpiled/services/geocoding.service.js'></script>
+    <script src='./src/transpiled/services/forecast-request.service.js'></script>
+    <script src='./src/transpiled/services/forecast-format.service.js'></script>
+    <script src='./src/transpiled/services/display-forecast.service.js'></script>
+</head>
 
-    <!-- View -->
-    <div ng-view></div>
+<body ng-app='wvApp'>
+    <!-- Main-header -->
+    <main-header></main-header>
+</body>
 
-  </body>
 </html>

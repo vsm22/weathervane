@@ -1,0 +1,47 @@
+<!-- Five-Day forecast -->
+<!-- //fdf means "five day forecast" -->
+<div id='fdf-wrap'>
+  <div class='fdf-title'>
+
+  </div>
+  <div class='fdf-element' ng-repeat='f in $ctrl.fiveDayForecast | limitTo: 5 | filter: {dayNum: $ctrl.notCurrentDay}'>
+    <div class='fdf-element-top-row'>
+      <div class='fdf-date'>
+        {{f.dayName}}, {{ f.monthName }} {{ f.dayNum }}, {{ f.year }}
+      </div>
+    </div>
+
+    <div class='fdf-element-bottom-row'>
+      <div class='fdf-element-left-pane'>
+        <img ng-src='{{"./images/" + $ctrl.getWeatherIcon(f.weather)}}'>
+      </div>
+
+      <div class='fdf-element-center-pane'>
+        <div class='fdf-temp'>
+          <div class='high-temp'>
+            {{ ($ctrl.tempUnits.value === "C") ? f.tempHighC : f.tempHighF | number:0 }}
+            {{ ($ctrl.tempUnits.value === "C") ? "&degC" : "&degF"}}
+          </div>
+          <div class='low-temp'>
+            {{ ($ctrl.tempUnits.value === "C") ? f.tempLowC : f.tempLowF | number:0 }}
+            {{ ($ctrl.tempUnits.value === "C") ? "&degC" : "&degF"}}
+          </div>
+        </div>
+      </div>
+
+      <div class='fdf-element-right-pane'>
+        <div class='fdf-weather'>
+          {{ f.weather }}
+        </div>
+
+        <div class='fdf-humidity'>
+          precipitation: {{ f.precip }} in
+        </div>
+
+        <div class='fdf-pressure'>
+          wind speed: {{ f.windSpeed }} mph
+        </div>
+      </div> <!-- </.fdf-element-center-pane> -->
+    </div> <!-- </.fdf-element-bottom-row> -->
+  </div> <!-- </.fdf-element> -->
+</div> <!-- </.fdf-wrap> -->

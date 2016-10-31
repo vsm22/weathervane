@@ -1,0 +1,44 @@
+<!-- Current Weather -->
+<!-- cw = "current weather" -->
+<div id='cw-wrap'>
+  <div id='cw-title'>
+    Current conditions
+  </div>
+
+  <div id='cw-element'>
+    <div id='cw-element-top-row'>
+      <div id='cw-date'>
+        {{$ctrl.weather.dayName}}, {{ $ctrl.weather.monthName }} {{ $ctrl.weather.dayNum }}, {{ $ctrl.weather.year }} {{ $ctrl.weather.time }}
+      </div>
+    </div>
+
+    <div id='cw-element-middle-row'>
+        <div id='cw-weather'>
+          {{ $ctrl.weather.weather }}
+        </div>
+
+        <div id='cw-humidity'>
+          humidity: {{ $ctrl.weather.humidity }} %
+        </div>
+
+        <div id='cw-pressure'>
+          pressure: {{ $ctrl.weather.pressure | number:2 }} in
+        </div>
+    </div>
+
+    <div id='cw-element-bottom-row'>
+      <div id='cw-element-left-pane'>
+        <img ng-src='{{"./images/" + $ctrl.getWeatherIcon($ctrl.weather.weather)}}'
+             width: '200px' height: '200px'>
+      </div>
+
+      <div id='cw-element-right-pane'>
+        <div id='cw-temp'>
+          {{ ($ctrl.tempUnits.value === "C") ? $ctrl.weather.tempC : $ctrl.weather.tempF | number:0 }}
+          {{ ($ctrl.tempUnits.value === "C") ? "&degC" : "&degF"}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
