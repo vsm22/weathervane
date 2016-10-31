@@ -12,7 +12,7 @@
 
 
   angular.module('wvApp').component('tenDayForecast', {
-    templateUrl: '../templates/tenDayForecast.html',
+    templateUrl: './templates/tenDayForecast.html',
     controller: TenDayForecastCtrl
   });
 

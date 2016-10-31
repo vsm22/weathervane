@@ -13,7 +13,7 @@
   TenDayForecastCtrl.$inject = ['$scope', 'geocodingService', 'forecastFormatService', 'displayForecastService'];
 
   angular.module('wvApp').component('tenDayForecast', {
-    templateUrl: '../templates/tenDayForecast.html',
+    templateUrl: './templates/tenDayForecast.html',
     controller: TenDayForecastCtrl
   });
 })(window.angular);

@@ -14,7 +14,7 @@
   CurrentWeatherCtrl.$inject = ['$scope', 'geocodingService', 'forecastFormatService', 'displayForecastService'];
 
   angular.module('wvApp').component('currentWeather', {
-    templateUrl: '../templates/currentWeather.html',
+    templateUrl: './templates/currentWeather.html',
     controller: CurrentWeatherCtrl
   });
 })(window.angular);

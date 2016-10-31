@@ -61,7 +61,7 @@
     MainHeaderCtrl.$inject = ['$scope', 'backgroundAnimationService', 'geocodingService', 'forecastRequestService', 'forecastFormatService', 'displayForecastService'];
 
     angular.module('wvApp').component('mainHeader', {
-        templateUrl: '../templates/mainHeader.html',
+        templateUrl: './templates/mainHeader.html',
         controller: MainHeaderCtrl,
         $routeConfig: [
           {path: '/current-weather/', name: 'CurrentWeather', component: 'currentWeather', useAsDefault: true},

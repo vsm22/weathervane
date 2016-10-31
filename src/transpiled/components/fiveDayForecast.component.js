@@ -13,7 +13,7 @@
   FiveDayForecastCtrl.$inject = ['$scope', 'geocodingService', 'forecastFormatService', 'displayForecastService'];
 
   angular.module('wvApp').component('fiveDayForecast', {
-    templateUrl: '../templates/fiveDayForecast.html',
+    templateUrl: './templates/fiveDayForecast.html',
     controller: FiveDayForecastCtrl
   });
 })(window.angular);
